@@ -1,0 +1,5 @@
+package com.daniel.back.repository;
+
+public interface UrlRepository {
+
+}

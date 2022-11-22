@@ -1,0 +1,30 @@
+package com.daniel.back;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.daniel.back.models.Cliente;
+import com.daniel.back.repository.ClienteRepository;
+
+@SpringBootApplication
+public class BackApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BackApplication.class, args);
+	}
+	
+	@Bean
+	CommandLineRunner initDatabase(ClienteRepository clienteRepository) {
+		return args -> {
+			clienteRepository.deleteAll();
+
+	//		Cliente c = new Cliente();
+	//		c.setName("Angular com Spring");
+	//		c.setCategory("front-end");
+
+	//		clienteRepository.save(c);
+		};
+	}
+}

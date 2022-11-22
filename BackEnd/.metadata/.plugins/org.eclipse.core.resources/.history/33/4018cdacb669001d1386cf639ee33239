@@ -1,0 +1,5 @@
+package com.daniel.back.repository;
+
+public class ClienteRepository extends JpaRepository<Cliente, Long> {
+    
+}
