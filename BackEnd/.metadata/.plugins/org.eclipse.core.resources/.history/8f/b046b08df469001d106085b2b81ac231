@@ -1,0 +1,68 @@
+package com.daniel.back.models;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+//	  @JsonProperty("_id")
+//	  private Long id;
+
+//	  public String createdAt;
+	public String CardName;
+	public String avatar;
+	public String Address;
+	public String ZipCode;
+	public String CardCode;
+
+	public class DateDeserializer {
+		private DateDeserializer() {
+			super();
+		}
+
+		public static LocalDate localTime(String createdAt) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+			return LocalDate.parse(createdAt, formatter);
+		}
+
+		public class Acao {
+
+			LocalTime entrada;
+
+			@JsonPOJOBuilder(withPrefix = "")
+			public static class JacksonBuilder {
+
+				LocalTime entrada;
+
+				public JacksonBuilder dataVencimentoReal(String entrada) {
+					this.entrada = DateDeserializer.localTime(entrada);
+					return this;
+				}
+			}
+		}
+
+	}
+}

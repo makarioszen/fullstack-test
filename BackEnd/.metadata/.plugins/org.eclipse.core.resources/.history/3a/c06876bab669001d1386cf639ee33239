@@ -1,0 +1,7 @@
+package com.daniel.back.repository;
+
+import com.daniel.back.models.Cliente;
+
+public class ClienteRepository extends JpaRepository <Cliente, Long> {
+    
+}

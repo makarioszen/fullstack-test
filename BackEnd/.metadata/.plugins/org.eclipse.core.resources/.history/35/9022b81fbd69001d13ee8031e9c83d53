@@ -1,0 +1,12 @@
+package com.daniel.back.repository;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.daniel.back.models.Cliente;
+
+@FeignClient(url= "https://637283b2348e947299f77e08.mockapi.io/b1s/v2/BusinessPartners" , name = "api")
+public interface UrlRepository {
+	@GetMapping("/list")
+	Cliente listAllClient ();
+}
