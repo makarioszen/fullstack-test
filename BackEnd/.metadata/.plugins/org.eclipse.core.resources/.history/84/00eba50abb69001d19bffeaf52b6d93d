@@ -1,0 +1,6 @@
+package com.daniel.back.repository;
+
+@FeignClient(url= "https://viacep.com.br/ws/" , name = "viacep")
+public interface UrlRepository {
+	
+}
